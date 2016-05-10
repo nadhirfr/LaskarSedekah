@@ -1,5 +1,6 @@
 package com.laskarsedekah.laskarsedekah;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,7 +20,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,27 +34,14 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -102,10 +91,37 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         final int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
+        if (id == R.id.nav_cara_sedekah) {
+            setTitle("Cara Sedekah");
 
-        } else if (id == R.id.nav_gallery) {
+            // Create the adapter that will return a fragment for each of the three
+            // primary sections of the activity.
+            mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
+            // Set up the ViewPager with the sections adapter.
+            mViewPager = (ViewPager) findViewById(R.id.container);
+            mViewPager.setAdapter(mSectionsPagerAdapter);
+
+            TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+            tabLayout.setupWithViewPager(mViewPager);
+            ListView lv1 = (ListView) findViewById(R.id.lv_bank);
+
+            //ListView lv1=(ListView)findViewById(R.id.listView1);
+            Level data[] = new Level[]
+                    {
+                            new Level("Bank Mandiri", "No. Rek: 1370010082077", "A/N: Ma’ruf Fahrudin"),
+                            new Level("Bank Muamalat", "No. Rek: 53 1001 2834", "A/N: Maruf Fahrudin"),
+                            new Level("BCA", "No. Rek: 8020161516", "A/N: Maruf Fahrudin"),
+                            new Level("BNI 46", "No. Rek: 1013031017", "A/N: Maruf Fahrudin"),
+                            new Level("BRI", "No. Rek: 685801003682533", "A/N: Maruf Fahrudin")
+                    };
+            LevelAdapter adp = new LevelAdapter(this, R.layout.list_bank, data);
+            lv1.setAdapter(adp);
+
+        } else if (id == R.id.nav_about) {
+            setTitle("About");
+            Intent intent = new Intent(this, About.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -124,8 +140,32 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    public class Level {
+        //public int icon;
+        public String title;
+        public String title2;
+        public String title3;
+
+        public Level() {
+            super();
+        }
+
+        public Level(String title, String title2, String title3) {
+            super();
+            //this.icon = icon;
+            this.title = title;
+            this.title2 = title2;
+            this.title3 = title3;
+        }
+
+    }
+
+
+
     //ini kebawah merupakan fragment dari tab
     public static class PlaceholderFragment extends Fragment {
+        private int mPage;
+        private int[] layoutTab = {R.layout.fragment_online_trans, R.layout.fragment_offline_trans};
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -150,9 +190,15 @@ public class MainActivity extends AppCompatActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_tab, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            mPage = getArguments().getInt(ARG_SECTION_NUMBER);
+
+//            switch (mPage-1){
+//                case 0:
+//
+//            }
+            View rootView = inflater.inflate(layoutTab[mPage - 1], container, false);
+            //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
     }
@@ -177,18 +223,17 @@ public class MainActivity extends AppCompatActivity
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 2;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return "SEDEKAH ONLINE";
                 case 1:
-                    return "SECTION 2";
-                case 2:
-                    return "SECTION 3";
+                    return "SEDEKAH LANGSUNG";
+
             }
             return null;
         }

@@ -15,7 +15,6 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:src="@drawable/logo" />
 
 
@@ -25,6 +24,6 @@
         android:layout_height="wrap_content"
 
         android:paddingLeft="5dp"
-        android:text="android.studio@android.com" />
+        android:text="admin@laskarsedekah.com\nTelp. :  0896-7193-7773\nPin BBM: 527DEF9F" />
 
 </LinearLayout>

@@ -4,13 +4,14 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_cara_sedekah"
+            android:icon="@android:drawable/ic_input_get"
+            android:title="Cara Sedekah" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_about"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="Tentang LaskarSedekah" />
+
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
@@ -34,8 +35,10 @@
                 android:title="Send" />
         </menu>
     </item>
-    <group android:checkableBehavior="single">
-        <item
+    <group android:checkableBehavior="none">
+
+
+    <item
             android:id="@+id/nav_setting"
             android:icon="@drawable/ic_menu_manage"
             android:title="Setting" />
