@@ -1,7 +1,8 @@
-package com.laskarsedekah.laskarsedekah;
+package com.laskarsedekah.laskarsedekah.Adapter;
 
 /**
  * Created by FACHRUL on 5/10/2016.
+ * ini custom adapter untuk listview
  */
 
 import android.app.Activity;
@@ -12,17 +13,17 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-/**
- * Created by FACHRUL on 5/10/2016.
- */
+import com.laskarsedekah.laskarsedekah.CaraSedekah;
+import com.laskarsedekah.laskarsedekah.R;
 
-public class LevelAdapter extends ArrayAdapter<MainActivity.Level> {
+
+public class CaraSedekah_LevelAdapter extends ArrayAdapter<CaraSedekah.Level> {
 
     static Context context;
     static int layoutResourceId;
-    MainActivity.Level data[] = null;
+    CaraSedekah.Level data[] = null;
 
-    public LevelAdapter(Context context, int layoutResourceId, MainActivity.Level[] data) {
+    public CaraSedekah_LevelAdapter(Context context, int layoutResourceId, CaraSedekah.Level[] data) {
         super(context, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
@@ -54,7 +55,7 @@ public class LevelAdapter extends ArrayAdapter<MainActivity.Level> {
             holder = (WeatherHolder) row.getTag();
         }
 
-        MainActivity.Level weather = data[position];
+        CaraSedekah.Level weather = data[position];
         holder.txtTitle.setText(weather.title);
         holder.txtTitle2.setText(weather.title2);
         holder.txtTitle3.setText(weather.title3);
