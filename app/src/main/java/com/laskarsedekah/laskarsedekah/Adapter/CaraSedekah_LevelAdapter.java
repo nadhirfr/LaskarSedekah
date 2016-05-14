@@ -11,9 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.laskarsedekah.laskarsedekah.CaraSedekah;
+import com.laskarsedekah.laskarsedekah.NavMenu.CaraSedekah;
 import com.laskarsedekah.laskarsedekah.R;
 
 
@@ -45,7 +46,7 @@ public class CaraSedekah_LevelAdapter extends ArrayAdapter<CaraSedekah.Level> {
             row = inflater.inflate(layoutResourceId, parent, false);
             //row.setMinimumHeight(200);
             holder = new WeatherHolder();
-            // holder.imgIcon = (ImageView)row.findViewById(R.id.imgIcon);
+            holder.imgIcon = (ImageView) row.findViewById(R.id.iv_bank);
             holder.txtTitle = (TextView) row.findViewById(R.id.txtTitle);
             holder.txtTitle2 = (TextView) row.findViewById(R.id.txtTitle2);
             holder.txtTitle3 = (TextView) row.findViewById(R.id.txtTitle3);
@@ -59,13 +60,13 @@ public class CaraSedekah_LevelAdapter extends ArrayAdapter<CaraSedekah.Level> {
         holder.txtTitle.setText(weather.title);
         holder.txtTitle2.setText(weather.title2);
         holder.txtTitle3.setText(weather.title3);
-        //    holder.imgIcon.setImageResource(weather.icon);
+        holder.imgIcon.setImageResource(weather.icon);
 
         return row;
     }
 
     static class WeatherHolder {
-        //   ImageView imgIcon;
+        ImageView imgIcon;
         TextView txtTitle;
         TextView txtTitle2;
         TextView txtTitle3;

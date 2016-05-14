@@ -8,10 +8,13 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
+    <!--<include-->
+    <!--layout="@layout/activity_tab"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent" />-->
     <include
-        layout="@layout/activity_tab"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:id="@+id/hapus"
+        layout="@layout/activity_tab" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
@@ -21,8 +24,7 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer"
-        android:measureAllChildren="true"
-        >
+        android:measureAllChildren="true">
 
 
         </android.support.design.widget.NavigationView>

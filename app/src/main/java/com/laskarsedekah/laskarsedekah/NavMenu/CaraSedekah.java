@@ -1,23 +1,32 @@
-package com.laskarsedekah.laskarsedekah;
+package com.laskarsedekah.laskarsedekah.NavMenu;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.laskarsedekah.laskarsedekah.R;
+
 /**
  * Created by FACHRUL on 5/12/2016.
  */
 public class CaraSedekah extends AppCompatActivity {
+    @Override
+    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+    }
 
     //ini kebawah merupakan fragment dari tab
     public static class PlaceholderFragment extends Fragment {
         private int mPage;
         private int[] layoutTab = {R.layout.fragment_online_trans, R.layout.fragment_offline_trans};
+
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -44,8 +53,8 @@ public class CaraSedekah extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             mPage = getArguments().getInt(ARG_SECTION_NUMBER);
 
-//            switch (mPage-1){
-//                case 0:
+//            switch (mPage){
+//                case 1:
 //
 //            }
             View rootView = inflater.inflate(layoutTab[mPage - 1], container, false);
@@ -93,7 +102,7 @@ public class CaraSedekah extends AppCompatActivity {
 
     //ini function untuk mengeset custom content list view
     public static class Level {
-        //public int icon;
+        public int icon;
         public String title;
         public String title2;
         public String title3;
@@ -102,9 +111,9 @@ public class CaraSedekah extends AppCompatActivity {
             super();
         }
 
-        public Level(String title, String title2, String title3) {
+        public Level(String title, String title2, String title3, int icon) {
             super();
-            //this.icon = icon;
+            this.icon = icon;
             this.title = title;
             this.title2 = title2;
             this.title3 = title3;
