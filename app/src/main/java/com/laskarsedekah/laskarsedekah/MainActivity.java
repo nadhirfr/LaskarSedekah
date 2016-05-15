@@ -49,7 +49,8 @@ public class MainActivity extends AppCompatActivity
                     public void onResponse(Note response) {
                         // response Object
                         TextView test = (TextView) findViewById(R.id.test);
-                        test.setText(response.getTo());
+                        assert test != null;
+                        test.setText(response.getHeading());
                     }
                 },
                 new Response.ErrorListener() {
